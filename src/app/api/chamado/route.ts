@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   const data = await request.json()
-
+  console.log('Dados recebidos:', data)
   const { error } = await supabase.from('chamados').insert([{
     nome: data.nome,
     motivo: data.motivo,
