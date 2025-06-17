@@ -24,3 +24,14 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ ok: true })
 }
+export async function GET() {
+  const { data, error } = await supabase.from('chamados').select('*').order('id', { ascending: false })
+
+  if (error) {
+    console.error('Erro ao buscar chamados:', error)
+    return NextResponse.json([], { status: 500 })
+  }
+
+  return NextResponse.json(data)
+}
+
